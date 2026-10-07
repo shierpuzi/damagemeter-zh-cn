@@ -1,0 +1,27 @@
+English (current)	Simplified Chinese	notes
+Damage Meter	伤害统计器	ModName
+Track your damage, live DPS, maximum DPS and damage sources in a Minecraft-style overlay. Customize the window and keybinds below. Work in progress; more features are coming.	以 Minecraft 风格浮窗实时显示伤害、当前 DPS、最高 DPS 与伤害来源。可在下方自定义窗口与快捷键。本模组仍在开发中，更多功能敬请期待。	Description
+Window appearance	窗口外观	Settings: Heading 'Window appearance'
+Horizontal position	水平位置	Settings: Slider 'Horizontal position' Label
+0% is left, 100% is right. Keeps the window inside the screen.	0% 为最左，100% 为最右。窗口始终保持在屏幕内。	Settings: Slider 'Horizontal position' Description
+Vertical position	垂直位置	Settings: Slider 'Vertical position' Label
+0% is top, 100% is bottom.	0% 为最上，100% 为最下。	Settings: Slider 'Vertical position' Description
+Window size	窗口大小	Settings: Slider 'Window size' Label
+Scale the damage window and its text.	缩放伤害窗口及其文字。	Settings: Slider 'Window size' Description
+Background opacity	背景不透明度	Settings: Slider 'Background opacity' Label
+Only changes the dark panel background.	仅改变深色底板的背景。	Settings: Slider 'Background opacity' Description
+Meter opacity	窗口不透明度	Settings: Slider 'Meter opacity' Label
+Changes the entire window, including bars and text.	改变整个窗口，包括条状图与文字。	Settings: Slider 'Meter opacity' Description
+Damage tracking	伤害统计	Settings: Heading 'Damage tracking'
+Show DPS	显示 DPS	Settings: Toggle 'Show DPS' Label
+Show maximum DPS	显示最高 DPS	Settings: Toggle 'Show maximum DPS' Label
+Show dungeon timer	显示地牢计时器	Settings: Toggle 'Show dungeon timer' Label
+Reset automatically on area changes	切换区域时自动重置	Settings: Toggle 'Reset on area changes' Label
+DPS calculation	DPS 计算方式	Settings: Select 'DPS calculation' Label
+Live modes return to zero when you stop attacking. Average includes idle time since the first hit of this reset.	实时模式在停止攻击后归零；平均值包含本轮首次命中以来的空闲时间。	Settings: Select 'DPS calculation' Description
+Average since first hit	自首次命中起的平均值	Settings: Select option 'Average since first hit'
+Controls	按键	Settings: Heading 'Controls'
+Show / hide meter	显示 / 隐藏窗口	Settings: Keybind 'Show / hide meter' Label
+Choose a primary key and an optional secondary key.	选择一个主按键，并可选择一个副按键。	Settings: Keybind Description (shared by both keybinds)
+Reset damage and maximum DPS	重置伤害与最高 DPS	Settings: Keybind 'Reset damage and maximum DPS' Label
+Settings are saved automatically. Maximum DPS is the highest live DPS since the last damage reset.	设置会自动保存。最高 DPS 是上次重置伤害以来的实时 DPS 峰值。	Settings: Text (footer note)

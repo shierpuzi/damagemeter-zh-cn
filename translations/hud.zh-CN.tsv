@@ -1,0 +1,9 @@
+English (current)	Simplified Chinese	notes
+No data	无数据	Widget: empty-state text (x3 instances)
+CO-OP	合作	Widget: co-op row header
+F8 Reset	F8 重置	Widget: reset button
+F7 Hide / Show	F7 显示 / 隐藏	Widget: toggle key hint
+DAMAGE DETAILS	伤害详情	Widget: details panel title
+MAX 0 DPS	最高 0 DPS	Widget: peak DPS readout label
+RUN 0:00	计时 0:00	Widget: run timer readout label
+Total	总计	Widget: total row label

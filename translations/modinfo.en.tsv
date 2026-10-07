@@ -1,0 +1,27 @@
+English (current)	Simplified Chinese	notes
+Damage Meter	Damage Meter
+Track your damage, live DPS, maximum DPS and damage sources in a Minecraft-style overlay. Customize the window and keybinds below. Work in progress; more features are coming.	Track your damage, live DPS, maximum DPS and damage sources in a Minecraft-style overlay. Customize the window and keybinds below. Work in progress; more features are coming.
+Window appearance	Window appearance
+Horizontal position	Horizontal position
+0% is left, 100% is right. Keeps the window inside the screen.	0% is left, 100% is right. Keeps the window inside the screen.
+Vertical position	Vertical position
+0% is top, 100% is bottom.	0% is top, 100% is bottom.
+Window size	Window size
+Scale the damage window and its text.	Scale the damage window and its text.
+Background opacity	Background opacity
+Only changes the dark panel background.	Only changes the dark panel background.
+Meter opacity	Meter opacity
+Changes the entire window, including bars and text.	Changes the entire window, including bars and text.
+Damage tracking	Damage tracking
+Show DPS	Show DPS
+Show maximum DPS	Show maximum DPS
+Show dungeon timer	Show dungeon timer
+Reset automatically on area changes	Reset automatically on area changes
+DPS calculation	DPS calculation
+Live modes return to zero when you stop attacking. Average includes idle time since the first hit of this reset.	Live modes return to zero when you stop attacking. Average includes idle time since the first hit of this reset.
+Average since first hit	Average since first hit
+Controls	Controls
+Show / hide meter	Show / hide meter
+Choose a primary key and an optional secondary key.	Choose a primary key and an optional secondary key.
+Reset damage and maximum DPS	Reset damage and maximum DPS
+Settings are saved automatically. Maximum DPS is the highest live DPS since the last damage reset.	Settings are saved automatically. Maximum DPS is the highest live DPS since the last damage reset.

@@ -1,0 +1,51 @@
+Noto Sans SC — SIL Open Font License 1.1
+========================================
+
+The CJK glyph outlines merged into the fonts in ../fonts/ come from Google's
+**Noto Sans SC (Regular)**, which is licensed under the SIL Open Font License,
+Version 1.1.
+
+Upstream: https://fonts.google.com/noto/specimen/Noto+Sans+SC
+OFL text:  https://openfontlicense.org/open-font-license-official-text/
+
+The SIL Open Font License permits use, modification, and redistribution of the
+font, including merging it with other fonts, provided that:
+
+  * the font is not sold on its own;
+  * any derivative that is redistributed keeps the OFL notice and does not use
+    the Reserved Font Name of the original (Noto is a Reserved Font Name);
+  * the copyright notice below is retained.
+
+Copyright notice for the source font:
+
+    Copyright 2014-2024 Adobe (http://www.adobe.com/), with Reserved Font Name
+    'Source'. Source is a trademark of Adobe in the United States and/or other
+    countries.
+
+    Noto is a trademark of Google LLC.
+
+Note on the merged faces in ../fonts/
+------------------------------------
+
+Those files are **derived from the mod author's own font assets** (the Minecraft
+Seven / Minecraft Five Bold faces shipped inside Damage Meter) with the Noto Sans
+SC CJK outlines added. They are provided to make it trivial for the author to
+test Chinese rendering, and they are redistribution-neutral for everyone else
+only in the sense that both inputs were already redistributable:
+
+  * the CJK outlines are OFL 1.1 (above);
+  * the Minecraft-style outlines are the author's own assets, and this repository
+    makes no claim over them.
+
+If the author would rather not take pre-built binaries, delete `../fonts/` and
+regenerate them from their own assets with `../tools/merge_cjk_font.py`; the
+script needs the original CFF assets plus a local copy of Noto Sans SC.
+
+Minecraft font notices carried inside the original assets
+----------------------------------------------------------
+
+    (c) 2015-2017 Mojang AB. All rights reserved.
+    MinecraftFive Bold / MinecraftSeven
+    P22/CanadaType: Minecraft Five Bold: 2017
+    Version 2.000
+    Minecraft is a trade mark of Mojang AB.
