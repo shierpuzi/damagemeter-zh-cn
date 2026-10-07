@@ -147,8 +147,10 @@ Verified by reading the shipped container byte by byte:
   FString framing (`int32 length+1` immediately before the body, NUL after)
 * the three fonts, their glyph counts, their empty CJK coverage, and their
   family/style names
-* that the merged fonts contain all 149 needed codepoints alongside the
-  original glyphs (`tools/merge_cjk_font.py` output was re-parsed and checked)
+* that the merged fonts contain the whole GB2312 repertoire alongside the
+  original glyphs (`tools/merge_cjk_font.py` output was re-parsed and checked:
+  6817 of 6818 codepoints present, the missing one being `U+3000`, which is
+  whitespace and needs no outline)
 * that the translated strings, once written, re-read with correct
   framing — i.e. the translation data in this repo is self-consistent
 
@@ -170,6 +172,33 @@ That second point is exactly why the fonts in this repo carry the full GB2312
 repertoire instead of only the characters the current translation uses. When
 companion damage lands and the UI needs strings like `同伴伤害` / `宠物伤害`, the
 glyphs will already be there.
+
+---
+
+## How this was made
+
+I am not the mod author and have no access to the project source. Everything here
+was produced by working outward from the shipped binaries, **with AI assistance**:
+the container was unpacked and read byte by byte, the string framing and font
+facts were established by inspection and mutation testing, and the scripts and
+documentation in this repo were written with that help.
+
+To be explicit about what that does and does not mean:
+
+* **The strings are mine.** The Chinese wording is my own translation choices for
+  the mod's existing English text; the AI helped extract them and write them back.
+* **The code is AI-assisted.** Treat `tools/*.py` as a starting point, not as
+  reviewed production code. Every claim it relies on is stated with the check
+  that produced it, so it can be re-verified rather than trusted.
+* **Everything was verified against the real files,** not assumed: the string
+  framing, the extracted strings, the font glyph counts and the merged font
+  coverage were all re-read and checked after writing.
+* **Nothing was verified in game.** I could not build a working container, so the
+  translation has never been rendered. Please treat it as a draft.
+
+If you would prefer not to use AI-produced assets, the useful part is still the
+translation table itself — 34 rows in `translations/*.tsv` that you can re-enter
+by hand in a few minutes, and the glyph list in `translations/chars-zh-CN.txt`.
 
 ---
 
