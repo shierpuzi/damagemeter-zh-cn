@@ -174,6 +174,27 @@ Three CFF/OTF faces ship inside the container, carved out as plain `OTTO` files:
   the original name table verbatim** rather than normalising it, so nothing about
   the existing resolution changes.
 
+### How much CJK coverage to merge
+
+The mod has no companion/pet damage yet (confirmed by the author), so the font
+repertoire had to be chosen with future UI strings in mind rather than only
+today's translation. Measured against `MinecraftFiveBold`:
+
+| Character set | Codepoints | Merged size | Covers `同伴 宠物 随从 召唤 队友` |
+|---|---|---|---|
+| current translation only | 149 | 0.06 MB | no |
+| **GB2312 (shipped)** | **6 818** | **1.49 MB** | yes |
+| full CJK Unified Ideographs block | 20 902 | 5.05 MB | yes |
+
+GB2312 is generated programmatically (iterate `0xB0A1..0xF7FE` through the
+`gb2312` codec) rather than from a hand-typed frequency list, so the set is
+reproducible and auditable. `translations/chars-required.txt` holds the 149
+characters strictly needed today for anyone who prefers the small build.
+
+`U+3000` (ideographic space) appears in `chars-zh-CN.txt` but is intentionally
+not merged: it is whitespace, so the merger's `isspace()` filter drops it, and a
+space needs no outline.
+
 ---
 
 ## 6. Damage sources (from the shipped widget's name table)
@@ -188,10 +209,12 @@ Three CFF/OTF faces ship inside the container, carved out as plain `OTTO` files:
 | `Pet` / `Minion` / `Summon` / `Companion` | 0 | **absent** |
 
 So **party damage is already implemented**. Pet/companion damage has no separate
-identifier anywhere in the assets; since the mod listens to the global
-`DealtDamage` event it is presumably already counted in the damage total, just
-not broken out. Splitting it out would be a mod change, not a translation
-change, and cannot be confirmed without running the game.
+identifier anywhere in the assets, which matches the author's statement in the
+mod comments that **companion damage is not implemented yet and is planned**.
+Whether companion hits currently land in the damage total (they go through the
+same global `DealtDamage` event) cannot be determined without running the game;
+either way, splitting them into their own row is a mod change, not a translation
+change.
 
 ---
 

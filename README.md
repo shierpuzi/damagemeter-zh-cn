@@ -54,7 +54,7 @@ labels need translating.
 
 The mod ships three custom CFF/OTF faces derived from the Minecraft fonts:
 
-| Asset | Glyphs | CJK |
+| Asset | Original glyphs | CJK |
 |---|---|---|
 | `MinecraftSeven` | 618 | none |
 | `MinecraftFiveBold` | 625 | none |
@@ -64,23 +64,55 @@ They contain **no CJK glyphs at all** (max codepoint `U+FB02`), so every Chinese
 character renders as a missing-glyph box, no matter how correct the strings are.
 The widget imports `MinecraftSeven` and `MinecraftFiveBoldSpaced` for its text.
 
-The three fonts in `fonts/` already contain the 149 CJK codepoints the
-translation above needs, merged in while keeping the original Minecraft
-letterforms, metrics and family/style names. `upem` is 1000 in both the mod
-fonts and Noto Sans SC, so no rescaling was needed and the CJK advance width is
-1000 (full-width), which sits correctly next to the 860-wide Latin glyphs.
+The three fonts in `fonts/` already carry CJK coverage, merged in while keeping
+the original Minecraft letterforms, metrics and family/style names:
 
-Drop them over the existing font assets (same object names, same paths) — the
-widget's existing references then resolve to CJK-capable faces.
+| | Glyphs | Size |
+|---|---|---|
+| `MinecraftSeven.otf` | 7470 | 1.53 MB |
+| `MinecraftFiveBold.otf` | 7363 | 1.49 MB |
+| `MinecraftFiveBoldSpaced.otf` | 7363 | 1.49 MB |
 
-If the translation ever grows, regenerate with:
+**Coverage is GB2312 — 6 763 hanzi plus CJK punctuation — not just the 149
+characters this translation happens to use.** That was a deliberate choice: pet
+and companion damage is on your roadmap, and a 149-character subset would have
+had no glyphs for exactly the words that feature needs. Sized options measured
+against `MinecraftFiveBold`:
+
+| Set | Size | `同伴` `宠物` `随从` `召唤` `队友` |
+|---|---|---|
+| 149 chars (this translation only) | 0.06 MB | **absent** |
+| **6 763 chars (GB2312, shipped)** | **1.49 MB** | present |
+| 20 902 chars (full CJK block) | 5.05 MB | present |
+
+GB2312 was picked because it is derived programmatically from the codec rather
+than from a hand-typed word list, so it is reproducible and auditable.
+
+If you would rather ship the small variant, regenerate from
+`translations/chars-required.txt` instead of `chars-zh-CN.txt`; both files are in
+the repo, and the same script produces either.
+
+`upem` is 1000 in both the mod fonts and Noto Sans SC, so no rescaling was needed
+and the CJK advance width is 1000 (full-width), which sits correctly next to the
+860-wide Latin glyphs.
+
+Drop the fonts over the existing font assets (same object names, same paths) —
+the widget's existing references then resolve to CJK-capable faces.
+
+To regenerate, with a local Noto Sans SC:
 
 ```
-python tools/merge_cjk_font.py --target <font.otf> --chars-file <chars.txt> --out <out.otf>
+python tools/merge_cjk_font.py --target <font.otf> \
+    --chars-file translations/chars-zh-CN.txt --out <out.otf>
+python tools/merge_cjk_font.py --verify <out.otf> --chars-file translations/chars-zh-CN.txt
 ```
 
 `tools/merge_cjk_font.py --help` documents it. The CJK source is
 `Noto Sans SC (Regular)`, SIL Open Font License 1.1 — see `LICENSES/`.
+
+One codepoint in `chars-zh-CN.txt` is intentionally not merged: `U+3000`
+(ideographic space). It is whitespace, so the merger's `isspace()` filter drops
+it, and nothing is lost — a space needs no outline.
 
 ### 3. A rebuild
 
@@ -124,13 +156,20 @@ Not verified (cannot be, from outside):
 
 * that the game renders the result correctly in situ — that needs the author's
   cook and a copy of the game
-* the runtime behaviour of the damage sources: the mod hooks
-  `SW.Event.DealtDamage` globally, and carries `Coop0`/`Coop1`/`Coop2` slots
-  plus `PartyNames`/`GetPartySystem`, so **party damage is already handled**.
-  No `Pet`/`Minion`/`Summon`/`Companion` identifier exists anywhere in the
-  assets, so pet damage is presumably folded into the damage total, not split
-  out. If a Chinese release is made, splitting pet damage out would need a
-  change in the mod, not in this kit.
+
+About the damage sources (from the shipped widget's name table):
+
+* the mod hooks `SW.Event.DealtDamage` globally, and carries
+  `Coop0`/`Coop1`/`Coop2` slots plus `PartyNames`/`GetPartySystem`, so **party
+  damage is already handled**;
+* no `Pet`/`Minion`/`Summon`/`Companion` identifier exists anywhere in the
+  assets, which matches the author's statement in the mod comments that
+  **companion damage is not implemented yet and is planned**.
+
+That second point is exactly why the fonts in this repo carry the full GB2312
+repertoire instead of only the characters the current translation uses. When
+companion damage lands and the UI needs strings like `同伴伤害` / `宠物伤害`, the
+glyphs will already be there.
 
 ---
 
