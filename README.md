@@ -198,7 +198,8 @@ To be explicit about what that does and does not mean:
 
 If you would prefer not to use AI-produced assets, the useful part is still the
 translation table itself — 34 rows in `translations/*.tsv` that you can re-enter
-by hand in a few minutes, and the glyph list in `translations/chars-zh-CN.txt`.
+by hand in a few minutes, plus `translations/chars-required.txt`, the 149
+characters those strings actually need.
 
 ---
 
